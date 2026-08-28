@@ -1,0 +1,34 @@
+<?php
+    if(isset($_POST['firstName'])){
+        include('connect.php');
+        $firstName=$_POST['firstName'];
+        $lastName=$_POST['lastName'];
+        $emailAddress=$_POST['emailAddress'];
+        $phoneNumber=$_POST['phoneNumber'];
+        $address1=$_POST['address1'];
+        $postalCode=$_POST['postalCode'];
+        $city=$_POST['city'];
+        $state=$_POST['state'];
+        $country=$_POST['country'];
+        $qry="select * from shipping where email='$emailAddress'";
+        $res=mysqli_query($con,$qry);
+        if(mysqli_num_rows($res)>0){
+            ?>
+            <script>alert("Already Register");
+            window.location="index.html";</script>
+            
+<?php            
+        }else{
+            $qry1="insert into shipping (firstName,lastName,emailAddress,phoneNumber,address1,postalCode,city,state,country) values ('$firstName','$lastName','$emailAddress','$phoneNumber','$address1','$postalCode','$city','$state','$country')";
+            mysqli_query($con, $qry1);
+            ?>
+            <script>alert("Successfully Register");
+            window.location="index.html";</script>
+            <?php
+        }
+    }else{
+        header("location:shipping.html");
+    }
+
+
+?>

@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146501207-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-146501207-1');
+</script>
+
+<html lang="en">
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> | Shipping</title>
+    <!-- CSS PLUGINS -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./css/app.css">
+    <!-- Hotjar Tracking Code for http://www.dynamicketo.com/ot3/ -->
+</head>
+
+<body>
+    <div class="mobile container">
+        <div class="row">
+            <div class="col-12 px-0 mb-3">
+                <img src="./images/mobile/step2top.jpg" alt="" class="img-fluid w-100">
+            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="cardtitle">Verify Your Shipping Info</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="order.html" method="post" name="prospect_form1" id='form-contact'>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="firstName" id="firstName"
+                                    value="<?=$fields_fname;?>" data-error-message="First name is required" onblur="validateFirstName()" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name*" data-error-message="Last name is required"
+                                    value="<?=$fields_lname;?>" onblur="validateLastName()" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="emailAddress" id="email" placeholder="Email Address*" data-error-message="Please enter a valid email address!"
+                                    value="<?=$fields_email;?>" onblur="validateEmail()" required>
+                                    </div>
+                                    <?php
+                                        $qry2="select * from shipping where emailAddress='$fields_email'";
+                                        $res=mysqli_query($con,$qry2);
+                                        if(mysqli_num_rows($res)>0){
+                                            while($row1=mysqli_fetch_array($res)){
+                                                ?>
+                                                
+                                                
+                                                
+                                                
+                                                <div class="form-group">
+                                <input type="tel" class="form-control masked" data-inputmask="'mask': '999 999 9999'" name="phoneNumber" id="phone" data-error-message="Phone number is required" placeholder="Phone Number*" onblur="validatePhone()" value="<?=$row1['phoneNumber'];?>" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="address1" id="address1" placeholder="Address*" data-error-message="Address is required" onblur="validateAddress()" value="<?=$row1['address1'];?>" required>
+                            </div>
+                            <div class="form-group">
+                            <input name="postalCode" id="postalCode" onblur="validateZip()" class="form-control" data-error-message="Zip code is required" type="tel" placeholder="Zip Code*" value="<?=$row1['postalCode'];?>" required> 
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="city" id="city" class="form-control" placeholder="City*" data-error-message="City is required" onblur="validateCity()" value="<?=$row1['city'];?>" required>
+                            </div>
+                            <div class="form-group">
+                                <select name="state" id="state" class="form-control required" data-selected=""
+                                    data-error-message="State is required" onblur="validateState()" required>
+                                    <option value="<?=$row1['state'];?>" selected=""><?=$row1['state'];?></option>
+<option value="Baden-Wuerttemberg">Baden-Wuerttemberg</option>
+<option value="Bavaria">Bavaria</option>
+<option value="Berlin">Berlin</option>
+<option value="Brandenburg">Brandenburg</option>
+<option value="Bremen">Bremen</option>
+<option value="Hamburg">Hamburg</option>
+<option value="Hesse">Hesse</option>
+<option value="Lower Saxony">Lower Saxony</option>
+<option value="Mecklenburg-Vorpommern">Mecklenburg-Vorpommern</option>
+<option value="North Rhine-Westphalia" >North Rhine-Westphalia</option>
+<option value="Rheinland-Pfalz" >Rheinland-Pfalz</option>
+<option value="Saarland">Saarland</option>
+<option value="Saxony" >Saxony</option>
+<option value="Saxony-Anhalt">Saxony-Anhalt</option>
+<option value="Schleswig-Holstein" >Schleswig-Holstein</option>
+<option value="Thuringia" >Thuringia</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select name="country" id="country" class="form-control">
+                                    <option value="DE" selected="">Germany</option>
+                                </select>
+                            </div>
+                            
+                            
+                            
+                            
+                                                
+                                                
+                                                
+                                                
+                                                
+                                    <?php            
+                                            }
+                                        }else{
+                                    ?>
+                            <div class="form-group">
+                                <input type="tel" class="form-control masked" data-inputmask="'mask': '999 999 9999'" name="phoneNumber" id="phone" data-error-message="Phone number is required" placeholder="Phone Number*" onblur="validatePhone()"  required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="address1" id="address1" placeholder="Address*" data-error-message="Address is required" onblur="validateAddress()" required>
+                            </div>
+                            <div class="form-group">
+                            <input name="postalCode" id="postalCode" onblur="validateZip()" class="form-control" data-error-message="Zip code is required" type="tel" placeholder="Zip Code*"  required> 
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="city" id="city" class="form-control" placeholder="City*" data-error-message="City is required" onblur="validateCity()" required>
+                            </div>
+                            <div class="form-group">
+                                <select name="state" id="state" class="form-control required" data-selected=""
+                                    data-error-message="State is required" onblur="validateState()" required>
+                                    <option value="" selected="">Select State</option>
+<option value="Baden-Wuerttemberg">Baden-Wuerttemberg</option>
+<option value="Bavaria">Bavaria</option>
+<option value="Berlin">Berlin</option>
+<option value="Brandenburg">Brandenburg</option>
+<option value="Bremen">Bremen</option>
+<option value="Hamburg">Hamburg</option>
+<option value="Hesse">Hesse</option>
+<option value="Lower Saxony">Lower Saxony</option>
+<option value="Mecklenburg-Vorpommern">Mecklenburg-Vorpommern</option>
+<option value="North Rhine-Westphalia" >North Rhine-Westphalia</option>
+<option value="Rheinland-Pfalz" >Rheinland-Pfalz</option>
+<option value="Saarland">Saarland</option>
+<option value="Saxony" >Saxony</option>
+<option value="Saxony-Anhalt">Saxony-Anhalt</option>
+<option value="Schleswig-Holstein" >Schleswig-Holstein</option>
+<option value="Thuringia" >Thuringia</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select name="country" id="country" class="form-control required">
+                                    <option value="DE" selected="">Germany</option>
+                                </select>
+                            </div>
+                            <?php
+                                        }
+                                        ?>
+                            <button type="submit" id="submit-button-mob" class="btn btn-block btn-flat check-button pulse">
+                              <img class="sping-top" alt="" src="img/chk-btn.png">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="./images/mobile/godaddyimg.jpg" class="img-fluid" alt="godaddyimg">
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p class="text-center">We care about your Privacy</p>
+                        <div class="text-center">
+                            <img src="./images/mobile/safe.jpg" class="img-fluid" alt="safe">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+
+</html>
+<?php
+}else{
+    header("location:signup.html");
+}
+?>
